@@ -1,0 +1,9 @@
+# VLAN Migration Toolkit for Fortinet FortiOS
+# Python 3.10+ required
+
+requests>=2.31.0,<3.0.0
+urllib3>=2.0.0,<3.0.0
+pydantic>=2.5.0,<3.0.0
+rich>=13.7.0,<14.0.0
+tenacity>=8.2.0,<9.0.0
+python-dotenv>=1.0.0,<2.0.0
