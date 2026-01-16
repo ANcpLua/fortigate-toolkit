@@ -187,9 +187,10 @@ class FortiGateClient:
         return data
 
     @retry(
-        retry=retry_if_exception_type((requests.ConnectionError, FortiGateRateLimitError)),
+        retry=retry_if_exception_type((FortiGateConnectionError, FortiGateRateLimitError)),
         stop=stop_after_attempt(3),
         wait=wait_exponential(multiplier=1, min=2, max=10),
+        reraise=True,  # Re-raise original exception, not tenacity.RetryError
     )
     def _request(
         self,
@@ -366,7 +367,10 @@ class FortiGateClient:
         try:
             policies = self.get("/cmdb/firewall/policy").get("results", [])
             for policy in policies:
-                if vlan_name in (policy.get("srcintf", []) + policy.get("dstintf", [])):
+                # FortiGate API returns interfaces as list of dicts: [{"name": "port1"}]
+                src_names = [intf.get("name", "") for intf in policy.get("srcintf", [])]
+                dst_names = [intf.get("name", "") for intf in policy.get("dstintf", [])]
+                if vlan_name in (src_names + dst_names):
                     references["firewall_policies"].append(str(policy.get("policyid")))
         except FortiGateError:
             pass
