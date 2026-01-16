@@ -1,0 +1,17 @@
+{
+  "name": "fortigate-toolkit",
+  "version": "1.0.0",
+  "description": "Claude Code plugin for FortiGate API toolkit development",
+  "author": {
+    "name": "ANcpLua",
+    "url": "https://github.com/ANcpLua"
+  },
+  "repository": "https://github.com/ANcpLua/fortigate-toolkit",
+  "skills": [
+    {
+      "name": "fortigate-development",
+      "source": "./skills/fortigate-development",
+      "description": "TDD workflow for FortiGate toolkit development"
+    }
+  ]
+}
