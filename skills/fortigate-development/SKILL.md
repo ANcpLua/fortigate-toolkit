@@ -104,13 +104,13 @@ mock_client._session.request.side_effect = [
 
 ## Exception Types
 
-| Exception | HTTP Code | Retried? |
-|-----------|-----------|----------|
-| `FortiGateAuthError` | 401, 403 | No |
-| `FortiGateNotFoundError` | 404 | No |
-| `FortiGateRateLimitError` | 429 | Yes (3x) |
-| `FortiGateConnectionError` | N/A | Yes (3x) |
-| `FortiGateError` | 500+ | No |
+| Exception                  | HTTP Code | Retried? |
+|----------------------------|-----------|----------|
+| `FortiGateAuthError`       | 401, 403  | No       |
+| `FortiGateNotFoundError`   | 404       | No       |
+| `FortiGateRateLimitError`  | 429       | Yes (3x) |
+| `FortiGateConnectionError` | N/A       | Yes (3x) |
+| `FortiGateError`           | 500+      | No       |
 
 ## Checklist
 

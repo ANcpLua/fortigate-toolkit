@@ -7,13 +7,12 @@ These tests verify the bug fixes for:
 
 from __future__ import annotations
 
+import pytest
+import requests
 import sys
 import time
 from pathlib import Path
 from unittest.mock import Mock, patch, call
-
-import pytest
-import requests
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -257,7 +256,7 @@ class TestVlanReferences:
     """
 
     def test_vlan_references_firewall_policies_src_interface(
-        self, mock_client, sample_policy_data
+            self, mock_client, sample_policy_data
     ):
         """Should find VLAN when it's a source interface.
 
@@ -300,7 +299,7 @@ class TestVlanReferences:
         assert "3" not in refs["firewall_policies"]  # This one doesn't use vlan100
 
     def test_vlan_references_firewall_policies_dst_interface(
-        self, mock_client, sample_policy_data
+            self, mock_client, sample_policy_data
     ):
         """Should find VLAN when it's a destination interface."""
         mock_client._session.request.side_effect = [
@@ -370,7 +369,7 @@ class TestVlanReferences:
         assert refs["firewall_policies"] == []
 
     def test_vlan_references_firewall_addresses(
-        self, mock_client, sample_address_data
+            self, mock_client, sample_address_data
     ):
         """Should find VLAN in firewall address associations."""
         mock_client._session.request.side_effect = [

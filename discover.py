@@ -22,10 +22,9 @@ import argparse
 import json
 import sys
 from dataclasses import asdict, dataclass
-from typing import Any
-
 from rich.console import Console
 from rich.table import Table
+from typing import Any
 
 from fortigate_client import (
     FortiGateClient,
@@ -102,9 +101,9 @@ class DiscoveryResult:
 
 
 def discover_vlans(
-    client: FortiGateClient,
-    interface: str | None = None,
-    include_references: bool = True,
+        client: FortiGateClient,
+        interface: str | None = None,
+        include_references: bool = True,
 ) -> DiscoveryResult:
     """
     Discover VLANs on the FortiGate.

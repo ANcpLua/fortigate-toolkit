@@ -67,6 +67,7 @@ from fortigate_client import (
 ### Retry Behavior
 
 The client automatically retries on:
+
 - `FortiGateConnectionError` - network issues
 - `FortiGateRateLimitError` - 429 responses
 
@@ -99,14 +100,14 @@ pytest tests/test_fortigate_client.py::TestRetryBehavior -v
 
 ### Test Categories
 
-| Class | Tests |
-|-------|-------|
-| `TestRateLimiter` | Rate limiting behavior |
-| `TestClientInitialization` | Client setup, env vars |
-| `TestErrorHandling` | HTTP error → exception mapping |
-| `TestRetryBehavior` | Retry on transient failures |
-| `TestVlanReferences` | VLAN dependency detection |
-| `TestVlanOperations` | CRUD operations |
+| Class                      | Tests                          |
+|----------------------------|--------------------------------|
+| `TestRateLimiter`          | Rate limiting behavior         |
+| `TestClientInitialization` | Client setup, env vars         |
+| `TestErrorHandling`        | HTTP error → exception mapping |
+| `TestRetryBehavior`        | Retry on transient failures    |
+| `TestVlanReferences`       | VLAN dependency detection      |
+| `TestVlanOperations`       | CRUD operations                |
 
 ## Working on This Codebase
 
@@ -131,13 +132,13 @@ pytest tests/test_fortigate_client.py::TestRetryBehavior -v
 
 ## Environment Variables
 
-| Variable | Required | Default | Description |
-|----------|----------|---------|-------------|
-| `FORTIGATE_HOST` | Yes | - | Firewall hostname/IP |
-| `FORTIGATE_API_KEY` | Yes | - | REST API token |
-| `FORTIGATE_VERIFY_SSL` | No | `false` | SSL verification |
-| `FORTIGATE_TIMEOUT` | No | `30` | Request timeout (sec) |
-| `FORTIGATE_RATE_LIMIT` | No | `1.0` | Min seconds between requests |
+| Variable               | Required | Default | Description                  |
+|------------------------|----------|---------|------------------------------|
+| `FORTIGATE_HOST`       | Yes      | -       | Firewall hostname/IP         |
+| `FORTIGATE_API_KEY`    | Yes      | -       | REST API token               |
+| `FORTIGATE_VERIFY_SSL` | No       | `false` | SSL verification             |
+| `FORTIGATE_TIMEOUT`    | No       | `30`    | Request timeout (sec)        |
+| `FORTIGATE_RATE_LIMIT` | No       | `1.0`   | Min seconds between requests |
 
 ## File Structure
 

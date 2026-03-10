@@ -47,11 +47,11 @@ export FORTIGATE_RATE_LIMIT="1.0"          # Optional: Seconds between requests
 3. Create new REST API Admin
 4. Generate and save the API token
 5. Ensure the admin profile has permissions for:
-   - `system.interface` (read/write)
-   - `firewall.policy` (read)
-   - `firewall.address` (read)
-   - `router.static` (read)
-   - `system.dhcp.server` (read)
+    - `system.interface` (read/write)
+    - `firewall.policy` (read)
+    - `firewall.address` (read)
+    - `router.static` (read)
+    - `system.dhcp.server` (read)
 
 ## Usage
 
@@ -177,8 +177,13 @@ All tools support `--json` for structured output:
       "description": "Management VLAN",
       "mtu": 1500,
       "references": {
-        "firewall_policies": ["1", "5"],
-        "firewall_addresses": ["mgmt-net"],
+        "firewall_policies": [
+          "1",
+          "5"
+        ],
+        "firewall_addresses": [
+          "mgmt-net"
+        ],
         "dhcp_servers": [],
         "static_routes": []
       }
@@ -211,7 +216,10 @@ All tools support `--json` for structured output:
       "status": "success",
       "error": null,
       "references_affected": {
-        "firewall_policies": ["1", "5"]
+        "firewall_policies": [
+          "1",
+          "5"
+        ]
       },
       "started_at": "2024-01-15T10:30:01Z",
       "completed_at": "2024-01-15T10:30:02Z"
@@ -266,11 +274,11 @@ All tools support `--json` for structured output:
 
 ## Exit Codes
 
-| Code | Meaning |
-|------|---------|
-| 0 | Success |
-| 1 | Error or failure |
-| 1 | Warnings (with `--strict`) |
+| Code | Meaning                    |
+|------|----------------------------|
+| 0    | Success                    |
+| 1    | Error or failure           |
+| 1    | Warnings (with `--strict`) |
 
 ## Error Handling
 
@@ -330,6 +338,3 @@ FortiGateRateLimitError: Rate limit exceeded
 - Increase `FORTIGATE_RATE_LIMIT` value
 - Wait and retry
 
-## License
-
-MIT License - See LICENSE file for details.

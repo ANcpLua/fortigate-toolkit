@@ -7,19 +7,18 @@ Production-ready client for FortiOS REST API interactions.
 from __future__ import annotations
 
 import os
+import requests
 import sys
 import time
-from dataclasses import dataclass, field
-from typing import Any
-
-import requests
 import urllib3
+from dataclasses import dataclass, field
 from tenacity import (
     retry,
     retry_if_exception_type,
     stop_after_attempt,
     wait_exponential,
 )
+from typing import Any
 
 # Suppress InsecureRequestWarning for self-signed certs (common in FortiGate)
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -193,11 +192,11 @@ class FortiGateClient:
         reraise=True,  # Re-raise original exception, not tenacity.RetryError
     )
     def _request(
-        self,
-        method: str,
-        endpoint: str,
-        params: dict | None = None,
-        json_data: dict | None = None,
+            self,
+            method: str,
+            endpoint: str,
+            params: dict | None = None,
+            json_data: dict | None = None,
     ) -> dict[str, Any]:
         """Execute API request with rate limiting and retry logic."""
         self._rate_limiter.wait()
@@ -266,7 +265,7 @@ class FortiGateClient:
         vlans = [
             iface for iface in all_interfaces
             if iface.get("interface") == parent_interface
-            and iface.get("type") == "vlan"
+               and iface.get("type") == "vlan"
         ]
         return sorted(vlans, key=lambda x: x.get("vlanid", 0))
 
@@ -278,14 +277,14 @@ class FortiGateClient:
         return iface
 
     def create_vlan(
-        self,
-        name: str,
-        vlan_id: int,
-        parent_interface: str,
-        ip: str | None = None,
-        netmask: str | None = None,
-        vdom: str = "root",
-        **kwargs: Any,
+            self,
+            name: str,
+            vlan_id: int,
+            parent_interface: str,
+            ip: str | None = None,
+            netmask: str | None = None,
+            vdom: str = "root",
+            **kwargs: Any,
     ) -> dict[str, Any]:
         """
         Create a new VLAN interface.

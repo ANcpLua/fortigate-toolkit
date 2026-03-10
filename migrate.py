@@ -26,11 +26,10 @@ import sys
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
-from typing import Any
-
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
+from typing import Any
 
 from fortigate_client import (
     FortiGateClient,
@@ -124,11 +123,11 @@ class MigrationPlan:
 
 
 def create_migration_plan(
-    client: FortiGateClient,
-    from_interface: str,
-    to_interface: str,
-    vlan_names: list[str] | None = None,
-    dry_run: bool = True,
+        client: FortiGateClient,
+        from_interface: str,
+        to_interface: str,
+        vlan_names: list[str] | None = None,
+        dry_run: bool = True,
 ) -> MigrationPlan:
     """
     Create a migration plan for VLANs.
@@ -225,8 +224,8 @@ def create_migration_plan(
 
 
 def execute_migration_step(
-    client: FortiGateClient,
-    step: MigrationStep,
+        client: FortiGateClient,
+        step: MigrationStep,
 ) -> MigrationStep:
     """
     Execute a single migration step.
@@ -263,9 +262,9 @@ def execute_migration_step(
 
 
 def execute_migration_plan(
-    client: FortiGateClient,
-    plan: MigrationPlan,
-    stop_on_error: bool = True,
+        client: FortiGateClient,
+        plan: MigrationPlan,
+        stop_on_error: bool = True,
 ) -> MigrationPlan:
     """
     Execute a complete migration plan.

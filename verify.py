@@ -24,11 +24,10 @@ import sys
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
-from typing import Any
-
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
+from typing import Any
 
 from fortigate_client import (
     FortiGateClient,
@@ -159,9 +158,9 @@ class VerificationReport:
 
 
 def verify_vlan(
-    client: FortiGateClient,
-    vlan_name: str,
-    expected_interface: str,
+        client: FortiGateClient,
+        vlan_name: str,
+        expected_interface: str,
 ) -> VlanVerification:
     """
     Verify a single VLAN migration.
@@ -363,8 +362,8 @@ def verify_vlan(
 
 
 def verify_interface_vlans(
-    client: FortiGateClient,
-    interface: str,
+        client: FortiGateClient,
+        interface: str,
 ) -> VerificationReport:
     """
     Verify all VLANs on an interface.
@@ -414,9 +413,9 @@ def verify_interface_vlans(
 
 
 def verify_specific_vlans(
-    client: FortiGateClient,
-    vlan_names: list[str],
-    expected_interface: str,
+        client: FortiGateClient,
+        vlan_names: list[str],
+        expected_interface: str,
 ) -> VerificationReport:
     """
     Verify specific VLANs are on expected interface.
